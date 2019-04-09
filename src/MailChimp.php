@@ -12,8 +12,8 @@ namespace DrewM\MailChimp;
  */
 class MailChimp
 {
-    private $api_key;
-    private $api_endpoint = 'https://<dc>.api.mailchimp.com/3.0';
+    public $api_key;
+    public $api_endpoint = 'https://<dc>.api.mailchimp.com/3.0';
 
     /*  SSL Verification
         Read before disabling:
