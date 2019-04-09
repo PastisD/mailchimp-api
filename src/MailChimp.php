@@ -21,10 +21,10 @@ class MailChimp
     */
     public $verify_ssl = true;
 
-    private $request_successful = false;
-    private $last_error         = '';
-    private $last_response      = array();
-    private $last_request       = array();
+    public $request_successful = false;
+    public $last_error         = '';
+    public $last_response      = array();
+    public $last_request       = array();
 
     /**
      * Create a new instance
@@ -171,7 +171,7 @@ class MailChimp
      * @return array|false Assoc array of decoded result
      * @throws \Exception
      */
-    private function makeRequest($http_verb, $method, $args = array(), $timeout = 10)
+    public function makeRequest($http_verb, $method, $args = array(), $timeout = 10)
     {
         if (!function_exists('curl_init') || !function_exists('curl_setopt')) {
             throw new \Exception("cURL support is required, but can't be found.");
@@ -254,7 +254,7 @@ class MailChimp
      * @param   resource $ch cURL session handle, used by reference
      * @param   array $data Assoc array of data to attach
      */
-    private function attachRequestPayload(&$ch, $data)
+    public function attachRequestPayload(&$ch, $data)
     {
         $encoded = json_encode($data);
         $this->last_request['body'] = $encoded;
@@ -266,7 +266,7 @@ class MailChimp
      * @param array $response The response from the curl request
      * @return array|false     The JSON decoded into an array
      */
-    private function formatResponse($response)
+    public function formatResponse($response)
     {
         $this->last_response = $response;
 
